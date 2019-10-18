@@ -1,0 +1,239 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image:url("money.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: auto;
+}
+
+.layer {
+    background-color: rgba(0, 100, 0,0.2);
+    background-size: cover;
+    position: absolute;
+    height: 1000px;
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    background-color: rgba(34, 34, 51,.9);
+    list-style-type: none;
+    overflow: auto;
+    min-width: 700px;
+    margin: 20px 0 0 0;
+}
+
+
+h1 {
+    position: relative;
+    text-align: left;
+    font-size: 50px;
+    padding: 10px 0 10px 30px;
+    margin: 0;
+    color: #52D08E;
+    background-color: rgba(34, 34, 51,.7);
+}
+
+.conditions {
+    padding: 10px;
+    position: absolute;
+    overflow: auto;
+    width: 570px;
+    min-width: 250px;
+    color: #AACCFF;
+    margin-left: 10px;
+}
+
+h2 {
+    width: 100px;
+    color: #ffffff;
+    margin-left: 10px;
+}
+
+ul {
+    float: left;
+    position: relative;
+    overflow: auto;
+    padding: 0;
+}
+
+.left {
+    width: 500px;
+    min-width: 500px;
+    max-height: 500px;
+}
+
+.leftText {
+    font-size: 25px;
+    margin-left: 10px;
+    margin-top: 15px;
+}
+input {
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: none;
+    width: 100px;
+}
+
+p {
+    padding: 0;
+    margin: 10px;
+    font-size: 25px;
+}
+
+img {
+    float: right;
+    position: relative;
+    top: 185px;
+    height: 220px;
+    width: 220px;
+    z-index: 200;
+}
+
+.imageHolder {
+    float: right;
+    height: 400px;
+    width: 400px;
+    background-color: rgba(34, 34, 34, 0.9);
+    padding: 0 0 20px 0;
+    border-radius: 5px;
+
+}
+form {
+    height: 400px;
+    width: 230px;
+    background-color: rgba(251, 151, 54,0.9);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+button {
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+#output {
+    margin: 300px 0 0 20px ;
+    display: inherit;
+    padding: 0;
+}
+
+.output {
+    color: #AACCFF;
+    margin-top: 10px;
+    padding: 10px 0;
+    overflow: auto;
+}
+
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+@media only screen and (max-width: 950px) {
+    .container {
+        width: initial;
+        min-width: initial;
+        margin: 50px 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 50px;
+        padding: 10px 0 10px 10px;
+        margin: 0;
+        width: initial;
+    }
+
+    .conditions {
+        padding: 10px;
+        position: initial;
+        overflow: auto;
+        width: initial;
+        min-width: initial;
+        margin: 20px ;
+    }
+
+    h2 {
+        width: initial;
+
+    }
+
+    ul {
+        float: initial;
+        position: initial;
+    }
+
+    .left {
+        width: initial;
+        min-width: initial;
+        max-height: initial;
+    }
+
+    .leftText {
+        font-size: 25px;
+    }
+
+    p {
+        margin: 10px;
+        font-size: 25px;
+    }
+
+    img {
+        float: right;
+        height: 220px;
+        width: 220px;
+        z-index: 200;
+        top: 175px;
+
+    }
+
+    .imageHolder {
+        float: right;
+        height: 400px;
+        width: 400px;
+        background-color: rgba(34, 34, 34, 0.9);
+        padding: 0;
+        border-radius: 5px;
+        margin: 50px 0 ;
+
+    }
+    form {
+        position:relative;
+        top:-10px;
+        height: 400px;
+        width: 230px;
+        background-color: rgba(251, 151, 54,0.9);
+        border-radius: 5px;
+        padding: 0;
+    }
+
+    button {
+        padding: 10px;
+        border-radius: 5px;
+        margin: 10px;
+    }
+
+    #output {
+        width: 350px;
+        display: inline-block;
+        float: left;
+        margin: 0;
+        padding: 0;
+    }
+
+    .output {
+        color: #AACCFF;
+        margin-top: 10px;
+        padding: 10px;
+        overflow: auto;
+    }
+
+}

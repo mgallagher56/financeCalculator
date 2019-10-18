@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="index.ts"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <script src="index.js" defer></script>
 </head>
 <body>
+<div class="layer">
+    <h1>Mayden Academy Finance Calculator</h1>
+<ul class="container">
+<li class="items"><div class="conditions">
+<h2>Conditions</h2>
+<ul class="left">
+    <li class="leftText">1. Loan amount must be between £1 and £8000</li>
+    <li class="leftText">2. If borrowing above 80% (£6400) £500 will be added to the repayment amount</li>
+    <li class="leftText">3. If borrowing above 90% (£7200) £1000 will be added to the repayment amount</li>
+    <li class="leftText">4. 5% of the total borrowed amount will be charged as an upfront admin fee</li>
+</ul>
+</div>
+</li>
+    <li class="items">
+        <div class="imageHolder">
+        <img src="pig.png">
+        <form method="post" name="finance">
+            <p>Loan Amount (£) :</p>
+            <input name="loan" type="number" min="1" max="8000" id="loan">
+            <p> Salary (£) :</p>
+            <input  name="salary" min="10000" max="150000"  type="number" id="salary" value="25000">
+            <p>Monthly repayment Percentage (%)</p>
+            <input  name="APR" type="number" min="10" max="100" value="10" id="APR" placeholder="10">
+            <button id="submit" type="submit" value="Submit">Submit</button>
+        </form>
+    </div>
+    </li>
+    <li></li>
+    <li id="output">
+    </li>
+</ul>
+
+
+</div>
 
 </body>
 </html>
