@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Loan calculator for up to £8,000">
     <title>Loan Calculator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -23,16 +24,22 @@
 </ul>
 </div>
 </li>
+
     <li class="items">
         <div class="imageHolder">
-        <img src="pig.png">
+        <img src="pig.png" alt="pigPicture">
         <form method="post" name="finance">
-            <p>Loan Amount (£) :</p>
-            <input name="loan" type="number" min="1" max="8000" id="loan">
-            <p> Salary (£) :</p>
+            <label for="loan">Loan Amount (£) :
+            <input name="loan" type="number" min="1" max="8000" id="loan" >
+            </label>
+
+            <label for="salary">Salary (£) :
             <input  name="salary" min="10000" max="150000"  type="number" id="salary" value="25000">
-            <p>Monthly repayment Percentage (%)</p>
+            </label>
+
+            <label for="APR">Monthly repayment Percentage (%)
             <input  name="APR" type="number" min="10" max="100" value="10" id="APR" placeholder="10">
+            </label>
             <button id="submit" type="submit" value="Submit">Submit</button>
         </form>
     </div>
