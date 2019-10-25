@@ -9,16 +9,19 @@ function calculate(){
         let validation = dataValidation(loan,salary,APR)
 
         if (validation === true) {
-            let adminFee = 0
-            prepareValues(loan, adminFee)
+            let adminFee = prepareValues(loan)
             prepLoan(loan)
             prepAdminFee(adminFee)
-            let borrowedAmount = calcBorrowedAmount(loan, adminFee)
             let monthlyPayment = calcMonthlyPayment(salary, APR)
+            let borrowedAmount = calcBorrowedAmount(loan, adminFee)
             let repaymentTime = calcRepaymentTime(borrowedAmount, monthlyPayment)
+            console.log(borrowedAmount)
             let finalPayment = calcFinalPayment(borrowedAmount, repaymentTime, monthlyPayment)
+            console.log(borrowedAmount)
             let upfrontFee = calcUpfrontFee(borrowedAmount)
-            outputPayback(repaymentTime,borrowedAmount,monthlyPayment,upfrontFee, finalPayment)
+            console.log(borrowedAmount)
+            outputPayback(repaymentTime,borrowedAmount,monthlyPayment,upfrontFee, finalPayment,loan)
+            console.log(borrowedAmount)
         }
     })
 }
@@ -46,7 +49,7 @@ function prepAdminFee(adminFee) {
     return parseInt(adminFee)
 }
 function calcBorrowedAmount(loan, adminFee) {
-    return loan + adminFee
+    return (parseInt(loan) + parseInt(adminFee))
 }
 
 function calcMonthlyPayment(salary, APR) {
@@ -115,9 +118,10 @@ function dataValidation(loan, salary, APR) {
     }
 }
 
-function outputPayback(repaymentTime,monthlyPayment,borrowedAmount,upfrontFee,finalPayment) {
+function outputPayback(repaymentTime,monthlyPayment,borrowedAmount,upfrontFee,finalPayment,loan) {
     //Loan repayment output
-        if (monthlyPayment >= borrowedAmount) {
+        if (monthlyPayment <= borrowedAmount) {
+            borrowedAmount = loan
             document.querySelector('#output').innerHTML = '<h2> Borrowing Information</h2>' +
                 '<p class="output">UpFront Admin Fee: £' + upfrontFee + '</p>' +
                 '<p class="output">Total Borrowed Amount: £' + borrowedAmount + '</p>' +
