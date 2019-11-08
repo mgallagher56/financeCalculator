@@ -30,14 +30,14 @@
         <img src="pig.png" alt="pigPicture">
         <form method="post" name="finance">
             <label for="loan">Loan Amount (£) :
-            <input name="loan" type="number" min="1" max="8000" id="loan" >
+            <input name="loan" type="number" min='1' step='0.01' max='8000' id="loan" >
             </label>
 
             <label for="salary">Salary (£) :
             <input  name="salary" min="10000" max="150000"  type="number" id="salary" value="25000">
             </label>
 
-            <label for="APR">Monthly repayment Percentage (%)
+            <label for="APR">Monthly Repayment Percentage (%)
             <input  name="APR" type="number" min="10" max="100" value="10" id="APR" placeholder="10">
             </label>
             <button id="submit" type="submit" value="Submit">Submit</button>

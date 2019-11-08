@@ -5,23 +5,17 @@ function calculate(){
         let loan = document.getElementById('loan').value
         let salary = document.getElementById('salary').value
         let APR = document.getElementById('APR').value
-
         let validation = dataValidation(loan,salary,APR)
-
         if (validation === true) {
             let adminFee = prepareValues(loan)
-            prepLoan(loan)
-            prepAdminFee(adminFee)
             let monthlyPayment = calcMonthlyPayment(salary, APR)
             let borrowedAmount = calcBorrowedAmount(loan, adminFee)
+            borrowedAmount = Number(borrowedAmount).toFixed(2)
+            monthlyPayment = Number(monthlyPayment).toFixed(2)
             let repaymentTime = calcRepaymentTime(borrowedAmount, monthlyPayment)
-            console.log(borrowedAmount)
             let finalPayment = calcFinalPayment(borrowedAmount, repaymentTime, monthlyPayment)
-            console.log(borrowedAmount)
             let upfrontFee = calcUpfrontFee(borrowedAmount)
-            console.log(borrowedAmount)
-            outputPayback(repaymentTime,borrowedAmount,monthlyPayment,upfrontFee, finalPayment,loan)
-            console.log(borrowedAmount)
+            outputPayback(repaymentTime, monthlyPayment, borrowedAmount, upfrontFee, finalPayment)
         }
     })
 }
@@ -30,26 +24,16 @@ calculate()
 
 function prepareValues(loan) {
     if ((loan >= 6400) && (loan <= 7199)) {
-        let adminFee = 500
-        return adminFee
+        return 500
     } else if (loan >= 7200) {
-        let adminFee = 1000
-        return adminFee
+        return 1000
     } else {
-       let adminFee = 0
-        return adminFee
+       return 0
     }
 }
 
-function prepLoan(loan) {
-    return parseInt(loan)
-}
-
-function prepAdminFee(adminFee) {
-    return parseInt(adminFee)
-}
 function calcBorrowedAmount(loan, adminFee) {
-    return (parseInt(loan) + parseInt(adminFee))
+    return loan + adminFee
 }
 
 function calcMonthlyPayment(salary, APR) {
@@ -80,13 +64,13 @@ function calcUpfrontFee(borrowedAmount) {
 
 function dataValidation(loan, salary, APR) {
     //output 3 error messages if all inputs are incorrect
-    if (((loan <= 0) || (loan > 8000)) && ((APR < 10) || (APR > 100)) && ((salary < 10000) || (salary > 150000))) {
+    if (((loan < 1) || (loan > 8000)) && ((APR < 10) || (APR > 100)) && ((salary < 10000) || (salary > 150000))) {
         document.querySelector('#output').innerHTML = ' <H2>Error</H2><p class="output">Loan must be between £1 and £8,000</p>' +
             '<p class="output">Salary must be between £10,000 and £150,000.</p>' +
             '<p class="output"> Monthly Repayment must be between 10% and 100%.</p>'
         return false
         //output 2 error messages if loan amount and APR are incorrect
-    } else if (((loan <= 0) || (loan > 8000)) && ((APR < 10) || (APR > 100))) {
+    } else if (((loan < 1) || (loan > 8000)) && ((APR < 10) || (APR > 100))) {
         document.querySelector('#output').innerHTML = '<H2>Error</H2><p class="output">Loan must be between £1 and £8,000.</p>' +
             '<p class="output"> Monthly Repayment must be between 10% and 100%.</p>'
         return false
@@ -96,12 +80,12 @@ function dataValidation(loan, salary, APR) {
             '<p class="output">Monthly Repayment must be between 10% and 100%.</p>'
         return false
         //output 2 error messages if loan amount and salary are incorrect
-    } else if (((loan <= 0) || (loan > 8000)) && ((salary < 10000) || (salary > 150000))) {
+    } else if (((loan < 1) || (loan > 8000)) && ((salary < 10000) || (salary > 150000))) {
         document.querySelector('#output').innerHTML = '<H2>Error</H2><p class="output">Loan must be between £1 and £8,000</p>' +
             '<p class="output">Salary must be between £10,000 and £150,000.</p>'
         return false
         //output error message if loan amount is incorrect
-    } else if ((loan <= 0) || (loan > 8000)) {
+    } else if ((loan < 1) || (loan > 8000)) {
         document.querySelector('#output').innerHTML = '<H2>Error</H2><p class="output">Loan must be between £1 and £8,000.</p>'
         return false
         //output error message if salary is incorrect
@@ -118,14 +102,13 @@ function dataValidation(loan, salary, APR) {
     }
 }
 
-function outputPayback(repaymentTime,monthlyPayment,borrowedAmount,upfrontFee,finalPayment,loan) {
+function outputPayback(repaymentTime,monthlyPayment,borrowedAmount,upfrontFee,finalPayment) {
     //Loan repayment output
-        if (monthlyPayment <= borrowedAmount) {
-            borrowedAmount = loan
+        if (monthlyPayment >= borrowedAmount) {
             document.querySelector('#output').innerHTML = '<h2> Borrowing Information</h2>' +
                 '<p class="output">UpFront Admin Fee: £' + upfrontFee + '</p>' +
                 '<p class="output">Total Borrowed Amount: £' + borrowedAmount + '</p>' +
-                '<p class="output">Monthly payments of £' + borrowedAmount + '</p>'
+                '<p class="output">One monthly payment of £' + borrowedAmount + '</p>'
         } else {
             document.querySelector('#output').innerHTML = '<h2> Borrowing Information</h2>' +
                 '<p class="output">UpFront Admin Fee: £' + upfrontFee + '</p>' +
