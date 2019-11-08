@@ -125,6 +125,6 @@ function outputPayback(repaymentTime,monthlyPayment,borrowedAmount,upfrontFee,fi
             document.querySelector('#output').innerHTML = '<h2> Borrowing Information</h2>' +
                 '<p class="output">UpFront Admin Fee: £' + upfrontFee + '</p>' +
                 '<p class="output">Total Borrowed Amount: £' + borrowedAmount + '</p>' +
-                '<p class="output">Monthly payments of £' + monthlyPayment + ' for ' + repaymentTime + ' months. One final payment of £' + finalPayment + '</p>'
+                '<p class="output">£' + monthlyPayment + ' for ' + repaymentTime + ' months. One final payment of £' + finalPayment + '</p>'
         }
 }
