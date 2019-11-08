@@ -5,9 +5,13 @@ function calculate(){
         let loan = document.getElementById('loan').value
         let salary = document.getElementById('salary').value
         let APR = document.getElementById('APR').value
+
         let validation = dataValidation(loan,salary,APR)
+
         if (validation === true) {
             let adminFee = prepareValues(loan)
+            loan = prepLoan(loan)
+            adminFee = prepAdminFee(adminFee)
             let monthlyPayment = calcMonthlyPayment(salary, APR)
             let borrowedAmount = calcBorrowedAmount(loan, adminFee)
             borrowedAmount = Number(borrowedAmount).toFixed(2)
@@ -15,6 +19,7 @@ function calculate(){
             let repaymentTime = calcRepaymentTime(borrowedAmount, monthlyPayment)
             let finalPayment = calcFinalPayment(borrowedAmount, repaymentTime, monthlyPayment)
             let upfrontFee = calcUpfrontFee(borrowedAmount)
+
             outputPayback(repaymentTime, monthlyPayment, borrowedAmount, upfrontFee, finalPayment)
         }
     })
@@ -32,8 +37,15 @@ function prepareValues(loan) {
     }
 }
 
+function prepLoan(loan) {
+    return parseInt(loan)
+}
+
+function prepAdminFee(adminFee) {
+    return parseInt(adminFee)
+}
 function calcBorrowedAmount(loan, adminFee) {
-    return loan + adminFee
+    return (parseInt(loan) + parseInt(adminFee))
 }
 
 function calcMonthlyPayment(salary, APR) {
